@@ -1,0 +1,35 @@
+<!-- Add Compra Modal -->
+<div id="addCompraModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('addCompraModal')">&times;</span>
+        <h2 class="text-xl font-semibold mb-4">Registrar Compra</h2>
+        <form id="compraForm" onsubmit="event.preventDefault(); saveCompra();">
+            <div class="mb-4">
+                <label for="compraData" class="block text-sm font-medium text-gray-700 mb-1">Data</label>
+                <input type="date" id="compraData" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label for="compraMercadoria" class="block text-sm font-medium text-gray-700 mb-1">Mercadoria</label>
+                <select id="compraMercadoria" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                    <!-- Mercadorias will be loaded here -->
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="compraQuantidade" class="block text-sm font-medium text-gray-700 mb-1">Quantidade</label>
+                <input type="number" step="0.01" id="compraQuantidade" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label for="compraCustoUnitario" class="block text-sm font-medium text-gray-700 mb-1">Custo Unitário (R$)</label>
+                <input type="number" step="0.01" id="compraCustoUnitario" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Custo Total (R$)</label>
+                <input type="number" step="0.01" id="compraCustoTotal" class="w-full px-3 py-2 border border-gray-300 rounded-md" readonly>
+            </div>
+            <div class="flex justify-end space-x-2">
+                <button type="button" class="px-4 py-2 bg-gray-300 rounded-md" onclick="closeModal('addCompraModal')">Cancelar</button>
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

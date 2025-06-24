@@ -1,0 +1,51 @@
+ <!-- Vendas Tab -->
+<div id="vendas" class="tab-content">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold">Vendas</h2>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onclick="openModal('addVendaModal')">
+            <i class="fas fa-plus mr-2"></i>Registrar Venda
+        </button>
+    </div>
+    
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produto</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantidade</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Preço Unitário</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lucro</th>
+                </tr>
+            </thead>
+            <tbody id="vendasTableBody" class="bg-white divide-y divide-gray-200">
+                <!-- Vendas will be loaded here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    const closeModal = () => { 
+        document.getElementById("addVendaModal").style.display = 'none'; 
+    }
+
+    const openModal = () => { 
+        document.getElementById("addVendaModal").style.display = 'block'; 
+    }
+
+    const openEdit = (data) => {
+        document.getElementById("addVendaModal").style.display = 'block';
+
+        const form = document.getElementById('vendaForm');
+    
+        form.reset();
+        form.action = '/home/sell/update/' + data.id;
+
+        // document.getElementById('mercadoriaNome').value = produto.nome;
+        // document.getElementById('mercadoriaUnidade').value = mercadoria.unidade;
+        // document.getElementById('mercadoriaCusto').value = mercadoria.custo;
+        // document.getElementById('mercadoriaEstoque').value = mercadoria.estoque;
+    }
+</script>

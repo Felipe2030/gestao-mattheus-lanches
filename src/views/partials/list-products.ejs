@@ -1,0 +1,63 @@
+<!-- Produtos Tab -->
+<div id="produtos" class="tab-content">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold">Produtos</h2>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onclick="openModal('addProdutoModal')">
+            <i class="fas fa-plus mr-2"></i>Adicionar Produto
+        </button>
+    </div>
+    
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ingredientes</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Custo</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Preço</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="produtosTableBody" class="bg-white divide-y divide-gray-200">
+                 <% produtos.forEach(p => { %>
+                    <tr>
+                        <td class="px-6 py-3 text-left text-xs font-medium tracking-wider"><%= p.nome %></td>
+                        <!-- <td class="px-6 py-3 text-left text-xs font-medium tracking-wider"><%= m.unidade %></td> -->
+                        <td class="px-6 py-3 text-left text-xs font-medium tracking-wider"><%= p.custo %></td>
+                        <td class="px-6 py-3 text-left text-xs font-medium tracking-wider"><%= p.preco %></td>
+                        <td class="flex gap-2">
+                            <button class="bg-yellow-400 px-3 py-1 rounded text-white mt-1" onclick='openEdit(<%- JSON.stringify(p) %>)'>Editar</button>
+                            <form action="/home/products/delete/<%= m.id %>" method="post">
+                                <button class="bg-red-400 px-3 py-1 rounded text-white mt-1" type="submit">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    const closeModal = () => { 
+        document.getElementById("addProdutoModal").style.display = 'none'; 
+    }
+
+    const openModal = () => { 
+        document.getElementById("addProdutoModal").style.display = 'block'; 
+    }
+
+    const openEdit = (data) => {
+        document.getElementById("addProdutoModal").style.display = 'block';
+
+        const form = document.getElementById('produtoForm');
+    
+        form.reset();
+        form.action = '/home/products/update/' + data.id;
+
+        // document.getElementById('mercadoriaNome').value = produto.nome;
+        // document.getElementById('mercadoriaUnidade').value = mercadoria.unidade;
+        // document.getElementById('mercadoriaCusto').value = mercadoria.custo;
+        // document.getElementById('mercadoriaEstoque').value = mercadoria.estoque;
+    }
+</script>

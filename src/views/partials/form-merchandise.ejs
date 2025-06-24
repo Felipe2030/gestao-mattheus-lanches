@@ -1,0 +1,34 @@
+<!-- Add Mercadoria Modal -->
+<div id="addMercadoriaModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 class="text-xl font-semibold mb-4">Adicionar Mercadoria</h2>
+        <form id="mercadoriaForm" method="post" action="/home/merchandise/create">
+            <input type="hidden" name="id" id="mercadoriaId">
+            <div class="mb-4">
+                <label for="mercadoriaNome" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                <input type="text" id="mercadoriaNome" name="nome" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label for="mercadoriaUnidade" class="block text-sm font-medium text-gray-700 mb-1">Unidade</label>
+                <select id="mercadoriaUnidade" name="unidade" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                    <option value="kg">kg</option>
+                    <option value="litro">litro</option>
+                    <option value="unidade">unidade</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="mercadoriaCusto" class="block text-sm font-medium text-gray-700 mb-1">Custo Unitário (R$)</label>
+                <input type="number" step="0.01" name="custo" id="mercadoriaCusto" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label for="mercadoriaEstoque" class="block text-sm font-medium text-gray-700 mb-1">Estoque Inicial</label>
+                <input type="number" step="0.01" name="estoque" id="mercadoriaEstoque" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div class="flex justify-end space-x-2">
+                <button type="button" class="px-4 py-2 bg-gray-300 rounded-md" onclick="closeModal()">Cancelar</button>
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
